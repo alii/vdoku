@@ -1,7 +1,5 @@
 module engine
 
-import rand.util
-
 pub const (
 	size          = 9
 	square_size   = 3
@@ -21,14 +19,6 @@ pub const (
 		})
 	})
 )
-
-pub fn any(nums []i8) []i8 {
-	return util.sample_nr(nums, nums.len)
-}
-
-pub fn pattern(r i8, c i8) i8 {
-	return (engine.square_size * (r % engine.square_size) + r / engine.square_size + c) % engine.size
-}
 
 struct Board {
 mut:
@@ -50,7 +40,7 @@ pub fn (b Board) get_iterations() i64 {
 	return b.iterations
 }
 
-pub fn (b Board) can_insert(x i8, y i8) bool {
+pub fn (b Board) is_empty(x i8, y i8) bool {
 	return b.shape[x][y] == 0
 }
 
