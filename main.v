@@ -3,7 +3,8 @@ module main
 import engine
 
 fn main() {
-	mut board := engine.Board{}
+	mut board := engine.new_board(engine.default_shape)
+
 	println('solving board')
 	println(board)
 

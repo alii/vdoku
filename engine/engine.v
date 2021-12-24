@@ -2,7 +2,7 @@ module engine
 
 import rand.util
 
-const (
+pub const (
 	size          = 9
 	square_size   = 3
 	default_shape = [
@@ -30,10 +30,16 @@ pub fn pattern(r i8, c i8) i8 {
 	return (engine.square_size * (r % engine.square_size) + r / engine.square_size + c) % engine.size
 }
 
-pub struct Board {
+struct Board {
 mut:
 	iterations i64
-	shape      [][]i8 = engine.default_shape
+	shape      [][]i8 [required]
+}
+
+pub fn new_board(shape [][]i8) Board {
+	return Board{
+		shape: shape
+	}
 }
 
 pub fn (b Board) get_shape() [][]i8 {
